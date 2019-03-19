@@ -51,11 +51,12 @@ EpPillarExporter >> file: anObject [
 EpPillarExporter >> fileOut: epiceaEntries [
 	| visitor |
 	visitor := self visitorClass new.
-	visitor stream: file writeStream.
+	[ stream := ZnCharacterWriteStream on: ((File named: file fullName ) writeStream).
+	visitor stream: stream.
 	epiceaEntries
 		do: [ :anEntry | 
 			anEntry content accept: visitor.
-			visitor stream newLine ]
+			visitor stream newLine ]] ensure: [ stream close ].
 ]
 
 { #category : #accessing }
