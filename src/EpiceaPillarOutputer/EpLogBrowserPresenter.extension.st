@@ -45,6 +45,5 @@ EpLogBrowserPresenter >> addMenuItemsForSelectedItemsIn: aMenu [
 EpLogBrowserPresenter >> pillarOutSelection [
 	| entries outputDirectory |
 	entries := (self selectedEntryItems collect: [ :each | each entry ]) reversed.
-	outputDirectory := log store directory.
-	EpPillarExporter askFileNameAndFileOut: entries in: outputDirectory
+	EpPillarExporter askFileNameAndFileOut: entries in: FileSystem workingDirectory 
 ]
