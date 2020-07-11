@@ -43,7 +43,7 @@ EpLogBrowserPresenter >> addMenuItemsForSelectedItemsIn: aMenu [
 
 { #category : #'*EpiceaPillarOutputer' }
 EpLogBrowserPresenter >> pillarOutSelection [
-	| entries outputDirectory |
+	| entries |
 	entries := (self selectedEntryItems collect: [ :each | each entry ]) reversed.
 	EpPillarExporter askFileNameAndFileOut: entries in: FileSystem workingDirectory 
 ]
